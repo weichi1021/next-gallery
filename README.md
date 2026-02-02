@@ -21,9 +21,7 @@
   ↓
 3️⃣ 計算相對寬度 (justifyScale * ratio)
   ↓
-4️⃣ 設置 galleryWidth
-  ↓
-5️⃣ 計算排列樣式 (width, flexGrow)
+4️⃣ 計算排列樣式 (width: galleryWidth, flexGrow)
   ↓
 完成圖片項 (setMapList) ✅
 ```

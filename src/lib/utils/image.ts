@@ -48,8 +48,7 @@ export const addImageProcess = (src: string): Promise<ImageWithSize> => {
  * 1. 加載圖片尺寸 (addImageProcess)
  * 2. 計算圖片比例 (width / height)
  * 3. 計算相對寬度 (justifyScale * ratio)
- * 4. 設置 galleryWidth
- * 5. 計算排列樣式 (width, flexGrow)
+ * 4. 計算排列樣式 (width: galleryWidth, flexGrow)
  *
  * @param imageList - 原始圖片資料陣列
  * @returns 增強後的圖片項陣列，包含尺寸和佈局資訊
@@ -71,12 +70,12 @@ export const addImageSize = async (
         const ratio = img.width! / img.height!;
         const ratioStr = formatAspectRatio(img.width!, img.height!);
 
-        // 根據寬高比設置初始畫廊寬度 (豎圖 200px，橫圖 300px)
-        let galleryWidth = (ratio < 1) ? 200 : 300;
+        // 根據寬高比設置初始畫廊寬度 (豎圖 150px，橫圖 200px)
+        let galleryWidth = (ratio < 1) ? 150 : 200;
 
         // Justified Gallery 演算法
         // 計算基礎刻度值用於計算每張圖片應佔的相對寬度
-        const justifyScale = 200;
+        const justifyScale = 150;
 
         // 如果計算寬度超過初始寬度，則更新 galleryWidth
         // 加 100px 是為了保留邊距和邊框空間
