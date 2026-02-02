@@ -42,8 +42,6 @@ export const ImageGallery: React.FC<ImageGalleryProps> = ({
             <div style={{aspectRatio: item.ratioStr}}>
               <Image
                 src={`${item.url}?q=80`}
-                blurDataURL={`${item.url}?q=1&w=10`}
-                placeholder="blur"
                 width={item.width}
                 height={item.height}
                 alt={`image-${idx}`}

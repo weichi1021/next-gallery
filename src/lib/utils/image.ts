@@ -1,5 +1,3 @@
-import React from 'react';
-
 export interface ImageItem {
   url: string;
   width?: number;
@@ -65,28 +63,20 @@ export const addImageSize = async (
         // 加載圖片尺寸 (使用 w=20 參數獲取縮略圖以提高速度)
         const img: ImageWithSize | ImageItem = await addImageProcess(`${item.url}?w=20`);
 
-        // 將縮圖尺寸放大 10 倍作為實際尺寸
-        const width = img.width * 10;
-        const height = img.height * 10;
+        // 將縮圖尺寸放大 20 倍作為實際尺寸
+        const width = img.width * 20;
+        const height = img.height * 20;
 
         // 計算圖片比例 (寬 / 高)
         const ratio = img.width! / img.height!;
         const ratioStr = formatAspectRatio(img.width!, img.height!);
 
-        // 根據寬高比設置初始畫廊寬度 (豎圖 200px，橫圖 250px)
-        let galleryWidth = (ratio < 1) ? 200 : 250;
+        // 根據寬高比設置初始畫廊寬度 (豎圖 200px，橫圖 300px)
+        let galleryWidth = (ratio < 1) ? 200 : 300;
 
         // Justified Gallery 演算法
         // 計算基礎刻度值用於計算每張圖片應佔的相對寬度
         const justifyScale = 200;
-
-        // 計算樣式屬性用於 flexbox 佈局
-        const style: React.CSSProperties = {
-          // 實際寬度 = 基礎刻度 * 寬高比
-          width: `${(justifyScale * ratio)}px`,
-          // 彈性增長係數等於寬高比，確保行佈局時等高
-          flexGrow: ratio,
-        };
 
         // 如果計算寬度超過初始寬度，則更新 galleryWidth
         // 加 100px 是為了保留邊距和邊框空間
@@ -102,14 +92,11 @@ export const addImageSize = async (
           ratio,
           ratioStr,
           galleryWidth,
-          style,
         };
       } catch (error) {
         console.error(`圖片加載失敗: ${item.url}`, error);
         // 加載失敗時返回原始資料
-        return {
-          ...item
-        };
+        return item;
       }
     })
   );

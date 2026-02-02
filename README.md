@@ -1,4 +1,4 @@
-# 圖片畫廊 Image Gallery 切版專案
+# 圖片牆 Image Gallery 切版專案
 
 這是一個使用 [Next.js](https://nextjs.org) 開發的 Image Gallery 介面切版專案。
 
