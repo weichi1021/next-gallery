@@ -8,7 +8,7 @@
 
 ## 成品畫面
 
-[成品畫面](./demo/image.png)
+![成品畫面](./demo/image.png)
 
 ## 流程圖
 
